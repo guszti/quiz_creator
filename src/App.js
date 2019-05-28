@@ -130,11 +130,11 @@ class Questions extends React.Component{
         </ul>
         {this.state.answers.length >= 2 ? save : ''}
         {this.state.questions.map((item, i) => 
-        <div key={item}>
+        <div key={i}>
           <br />
           <br/>
           <hr />
-          <table key={i}>
+          <table>
             <tbody>
               <tr><th>{item.title}</th></tr>
               {item.answers.map((a, j) => 
