@@ -2,9 +2,27 @@ import React from 'react';
 import './App.css';
 
 class Answer extends React.Component{
+  constructor(props){
+    super(props);
+
+    this.state = {is_checked: false};
+
+    this.handle_check = this.handle_check.bind(this);
+  }
+
+  handle_check(e){
+    this.setState({
+      is_checked: !e.target.is_checked
+      },
+      () => {this.props.mark_answer(this.state.is_checked, this.props.index);}
+    );
+  }
+
   render(){
     return(
-        this.props.a
+        <li key={this.props.index}>
+          {this.props.index}<input type='checkbox' onChange={this.handle_check} />
+        </li>
     );
   }
 }
@@ -74,12 +92,14 @@ class Questions extends React.Component{
     this.state = {
       title: '',
       answers: [],
-      questions: []
+      questions: [],
+      is_right: false
     }
 
     this.add_title = this.add_title.bind(this);
     this.add_answer = this.add_answer.bind(this);
     this.save_question = this.save_question.bind(this);
+    this.mark_answer = this.mark_answer.bind(this);
   }
 
   add_title(title){
@@ -90,7 +110,7 @@ class Questions extends React.Component{
 
   add_answer(answer){
     this.setState({
-      answers: this.state.answers.concat([answer])
+      answers: this.state.answers.push([answer])
     });
   }
 
@@ -100,6 +120,13 @@ class Questions extends React.Component{
       title: '',
       answers: []
     }, () => {console.log(this.state.questions);});    
+  }
+
+  mark_answer(m, i){
+    this.setState({
+      answers: this.state.answers[i].push([m])
+    });
+    console.log(this.state.answers[i]);
   }
 
   run_quiz(){
@@ -123,9 +150,7 @@ class Questions extends React.Component{
         <QuestionForm t={this.state.title} add_title={this.add_title} add_answer={this.add_answer} />
         <ul>
           {this.state.answers.map((a, i) =>
-            <li key={i}>
-              <Answer a={a} />
-            </li>
+            <Answer a={a[0]} key={i} index={i} mark_answer={this.mark_answer} />
           )}
         </ul>
         {this.state.answers.length >= 2 ? save : ''}
@@ -140,7 +165,7 @@ class Questions extends React.Component{
               {item.answers.map((a, j) => 
                 <tr key={j}>
                   <td>
-                    <Answer a={a} /> 
+                    {a} 
                   </td>
                 </tr>
               )}
