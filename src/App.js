@@ -21,7 +21,7 @@ class Answer extends React.Component{
   render(){
     return(
         <li key={this.props.index}>
-          {this.props.index}<input type='checkbox' onChange={this.handle_check} />
+          {this.props.a}<input type='checkbox' onChange={this.handle_check} />
         </li>
     );
   }
@@ -108,8 +108,13 @@ class Questions extends React.Component{
   }
 
   add_answer(answer){
+    const new_answer = {
+      text: answer,
+      right: false
+    };
+
     this.setState({
-      answers: this.state.answers.concat([answer, false])
+      answers: this.state.answers.concat([new_answer])
     });
   }
 
@@ -123,7 +128,7 @@ class Questions extends React.Component{
 
   mark_answer(m, i){
     let new_list = this.state.answers;
-    new_list[i + 1] = m;
+    new_list[i].right = m;
 
     this.setState({
       answers: new_list
@@ -152,7 +157,7 @@ class Questions extends React.Component{
         <QuestionForm t={this.state.title} add_title={this.add_title} add_answer={this.add_answer} />
         <ul>
           {this.state.answers.map((a, i) =>
-            (i % 2 === 0) ? <Answer a={a[0]} key={i} index={i} mark_answer={this.mark_answer} /> : ''
+            <Answer a={a.text} key={i} index={i} mark_answer={this.mark_answer} />
           )}
         </ul>
         {this.state.answers.length >= 2 ? save : ''}
@@ -165,13 +170,11 @@ class Questions extends React.Component{
             <tbody>
               <tr><th>{item.title}</th></tr>
               {item.answers.map((a, j) => 
-                (j % 2 === 0) ?
                 <tr key={j}>
                   <td>
-                    {a} 
+                    {(a.right === true) ? <p style={{color:'green'}}><b>{a.text}</b></p> : a.text} 
                   </td>
                 </tr>
-                : ''
               )}
             </tbody>
           </table>
