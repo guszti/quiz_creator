@@ -85,7 +85,15 @@ class QuestionForm extends React.Component{
   }
 }
 
-class Questions extends React.Component{
+class Quiz extends React.Component{
+  render(){
+    return(
+      <p>Quiz started</p>
+    );
+  }
+}
+
+class QuizCreator extends React.Component{
   constructor(props){
     super(props);
 
@@ -93,12 +101,14 @@ class Questions extends React.Component{
       title: '',
       answers: [],
       questions: [],
+      running: false
     }
 
     this.add_title = this.add_title.bind(this);
     this.add_answer = this.add_answer.bind(this);
     this.save_question = this.save_question.bind(this);
     this.mark_answer = this.mark_answer.bind(this);
+    this.run_quiz = this.run_quiz.bind(this);
   }
 
   add_title(title){
@@ -119,11 +129,17 @@ class Questions extends React.Component{
   }
 
   save_question(){
-    this.setState({
-      questions: this.state.questions.concat([{'title': this.state.title, 'answers': this.state.answers}]),
-      title: '',
-      answers: []
-    }, () => {console.log(this.state.questions);});    
+    let ans = this.state.answers.filter((item) => item.right === true);
+
+    if(ans.length > 0){
+      this.setState({
+        questions: this.state.questions.concat([{'title': this.state.title, 'answers': this.state.answers}]),
+        title: '',
+        answers: []
+      }, () => {console.log(this.state.questions);});
+    }else{
+      alert('Mark at least one good answer!');
+    }
   }
 
   mark_answer(m, i){
@@ -137,7 +153,9 @@ class Questions extends React.Component{
   }
 
   run_quiz(){
-    alert('quiz begun')
+    this.setState({
+      running: true
+    });
   }
 
   render(){
@@ -151,6 +169,7 @@ class Questions extends React.Component{
     );
 
     return(
+      this.state.running ? <Quiz /> :
       <div>
         {this.state.questions.length >= 4 ? run : ''}
         <h1>{this.state.title}</h1>
@@ -187,7 +206,7 @@ class Questions extends React.Component{
 
 function App() {
   return (
-    <Questions />
+    <QuizCreator />
   );
 }
 
