@@ -63,7 +63,7 @@ class QuestionForm extends React.Component{
       <div>
         <form onSubmit={this.handle_title}>
           <input type='text' value={this.state.value} onChange={this.handle_change} />
-          <input type='submit' value='Create title' />
+          <input type='submit' value='Add a question!' />
         </form>
       </div>
     );
@@ -72,7 +72,7 @@ class QuestionForm extends React.Component{
       <div>
         <form onSubmit={this.handle_answer}>
           <input type='text' value={this.state.value} onChange={this.handle_change} />
-          <input type='submit' value='Create question' />
+          <input type='submit' value='Add an answer!' />
         </form>
       </div>
     );
@@ -86,9 +86,16 @@ class QuestionForm extends React.Component{
 }
 
 class Quiz extends React.Component{
+  constructor(props){
+    super(props);
+  }
   render(){
     return(
-      <p>Quiz started</p>
+      <div>
+        <h1>{this.props.questions[0].title}</h1>
+        <p>{this.props.questions[0].answers[0].text}</p>
+        <p>{this.props.questions[0].answers[1].text}</p>
+      </div>
     );
   }
 }
@@ -169,7 +176,7 @@ class QuizCreator extends React.Component{
     );
 
     return(
-      this.state.running ? <Quiz /> :
+      this.state.running ? <Quiz questions={this.state.questions} /> :
       <div>
         {this.state.questions.length >= 4 ? run : ''}
         <h1>{this.state.title}</h1>
@@ -190,9 +197,7 @@ class QuizCreator extends React.Component{
               <tr><th>{item.title}</th></tr>
               {item.answers.map((a, j) => 
                 <tr key={j}>
-                  <td>
-                    {(a.right === true) ? <p style={{color:'green'}}><b>{a.text}</b></p> : a.text} 
-                  </td>
+                  {(a.right === true) ? <td style={{backgroundColor:'Chartreuse'}}><b>{a.text}</b></td> : <td>a.text</td>}
                 </tr>
               )}
             </tbody>
