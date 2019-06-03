@@ -12,7 +12,7 @@ class Answer extends React.Component{
 
   handle_check(e){
     this.setState({
-      is_checked: !e.target.is_checked
+      is_checked: !this.state.is_checked
       },
       () => {this.props.mark_answer(this.state.is_checked, this.props.index);}
     );
@@ -93,7 +93,6 @@ class Questions extends React.Component{
       title: '',
       answers: [],
       questions: [],
-      is_right: false
     }
 
     this.add_title = this.add_title.bind(this);
@@ -110,7 +109,7 @@ class Questions extends React.Component{
 
   add_answer(answer){
     this.setState({
-      answers: this.state.answers.push([answer])
+      answers: this.state.answers.concat([answer, false])
     });
   }
 
@@ -123,10 +122,13 @@ class Questions extends React.Component{
   }
 
   mark_answer(m, i){
+    let new_list = this.state.answers;
+    new_list[i + 1] = m;
+
     this.setState({
-      answers: this.state.answers[i].push([m])
+      answers: new_list
     });
-    console.log(this.state.answers[i]);
+    console.log(this.state.answers);
   }
 
   run_quiz(){
@@ -150,7 +152,7 @@ class Questions extends React.Component{
         <QuestionForm t={this.state.title} add_title={this.add_title} add_answer={this.add_answer} />
         <ul>
           {this.state.answers.map((a, i) =>
-            <Answer a={a[0]} key={i} index={i} mark_answer={this.mark_answer} />
+            (i % 2 === 0) ? <Answer a={a[0]} key={i} index={i} mark_answer={this.mark_answer} /> : ''
           )}
         </ul>
         {this.state.answers.length >= 2 ? save : ''}
@@ -163,11 +165,13 @@ class Questions extends React.Component{
             <tbody>
               <tr><th>{item.title}</th></tr>
               {item.answers.map((a, j) => 
+                (j % 2 === 0) ?
                 <tr key={j}>
                   <td>
                     {a} 
                   </td>
                 </tr>
+                : ''
               )}
             </tbody>
           </table>
