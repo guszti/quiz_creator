@@ -85,6 +85,42 @@ class QuestionForm extends React.Component{
   }
 }
 
+class EndScreen extends React.Component{
+  constructor(props){
+    super(props);
+
+  }
+
+  render(){
+    return(
+      <div>
+        <h2>Quiz has ended!</h2>
+        <p>You've reached {this.props.score}%</p>
+        <br />
+        <button>Create new quiz</button><button>Try this one again</button>
+      </div>
+    );
+  }
+}
+
+class GuessButton extends React.Component{
+  constructor(props){
+    super(props);
+
+    this.handle_guess = this.handle_guess.bind(this);
+  }
+
+  handle_guess(e){
+    e.preventDefault();
+  }
+
+  render(){
+    return(
+      <button onClick={this.handle_guess}>{this.props.text}</button>
+    );
+  }
+}
+
 class Quiz extends React.Component{
   constructor(props){
     super(props);
@@ -117,14 +153,12 @@ class Quiz extends React.Component{
           <form onSubmit={this.submit_question}>
             <h2>{this.props.questions[this.state.question_number].title}</h2>
             {this.props.questions[this.state.question_number].answers.map((answer) =>
-              <button onClick={this.handle_guess}>{answer.text}</button>
+              <GuessButton handle_guess={this.handle_guess} text={answer.text} />
             )}
             <input type="submit" value="Submit" />
           </form>
         : 
-          <div>
-            <h1>Quiz ended</h1>
-          </div>
+          <EndScreen score={this.state.score} />
         }
       </div>
     );
