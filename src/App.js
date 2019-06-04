@@ -88,13 +88,44 @@ class QuestionForm extends React.Component{
 class Quiz extends React.Component{
   constructor(props){
     super(props);
+
+    this.state = {
+      question_number: 0,
+      score: 0
+    };
+
+    this.submit_question = this.submit_question.bind(this);
   }
+
+  submit_question(e){
+    e.preventDefault();
+
+    this.setState({
+      question_number: this.state.question_number + 1
+    });
+  }
+
+  handle_guess(e){
+    e.preventDefault();
+
+  }
+
   render(){
     return(
       <div>
-        <h1>{this.props.questions[0].title}</h1>
-        <p>{this.props.questions[0].answers[0].text}</p>
-        <p>{this.props.questions[0].answers[1].text}</p>
+        {this.state.question_number < this.props.questions.length ?
+          <form onSubmit={this.submit_question}>
+            <h2>{this.props.questions[this.state.question_number].title}</h2>
+            {this.props.questions[this.state.question_number].answers.map((answer) =>
+              <button onClick={this.handle_guess}>{answer.text}</button>
+            )}
+            <input type="submit" value="Submit" />
+          </form>
+        : 
+          <div>
+            <h1>Quiz ended</h1>
+          </div>
+        }
       </div>
     );
   }
@@ -127,7 +158,8 @@ class QuizCreator extends React.Component{
   add_answer(answer){
     const new_answer = {
       text: answer,
-      right: false
+      right: false,
+      guess: false
     };
 
     this.setState({
@@ -197,7 +229,7 @@ class QuizCreator extends React.Component{
               <tr><th>{item.title}</th></tr>
               {item.answers.map((a, j) => 
                 <tr key={j}>
-                  {(a.right === true) ? <td style={{backgroundColor:'Chartreuse'}}><b>{a.text}</b></td> : <td>a.text</td>}
+                  {(a.right === true) ? <td style={{backgroundColor:'Chartreuse'}}><b>{a.text}</b></td> : <td>{a.text}</td>}
                 </tr>
               )}
             </tbody>
