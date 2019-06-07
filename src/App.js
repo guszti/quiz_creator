@@ -86,11 +86,6 @@ class QuestionForm extends React.Component{
 }
 
 class EndScreen extends React.Component{
-  constructor(props){
-    super(props);
-
-  }
-
   render(){
     return(
       <div>
@@ -107,16 +102,17 @@ class GuessButton extends React.Component{
   constructor(props){
     super(props);
 
-    this.handle_guess = this.handle_guess.bind(this);
+    this.handle_click = this.handle_click.bind(this);
   }
 
-  handle_guess(e){
+  handle_click(e){
     e.preventDefault();
+    this.props.handle_guess(this.props.id);
   }
 
   render(){
     return(
-      <button onClick={this.handle_guess}>{this.props.text}</button>
+      <button onClick={this.handle_click}>{this.props.text}</button>
     );
   }
 }
@@ -133,6 +129,10 @@ class Quiz extends React.Component{
     this.submit_question = this.submit_question.bind(this);
   }
 
+  handle_guess(id){
+    console.log(id);
+  }
+
   submit_question(e){
     e.preventDefault();
 
@@ -141,19 +141,14 @@ class Quiz extends React.Component{
     });
   }
 
-  handle_guess(e){
-    e.preventDefault();
-
-  }
-
   render(){
     return(
       <div>
         {this.state.question_number < this.props.questions.length ?
           <form onSubmit={this.submit_question}>
             <h2>{this.props.questions[this.state.question_number].title}</h2>
-            {this.props.questions[this.state.question_number].answers.map((answer) =>
-              <GuessButton handle_guess={this.handle_guess} text={answer.text} />
+            {this.props.questions[this.state.question_number].answers.map((answer, index) =>
+              <GuessButton key={index} handle_guess={this.handle_guess} text={answer.text} id={index}/>
             )}
             <input type="submit" value="Submit" />
           </form>
@@ -244,7 +239,7 @@ class QuizCreator extends React.Component{
     return(
       this.state.running ? <Quiz questions={this.state.questions} /> :
       <div>
-        {this.state.questions.length >= 4 ? run : ''}
+        {this.state.questions.length >= 1 ? run : ''}
         <h1>{this.state.title}</h1>
         <QuestionForm t={this.state.title} add_title={this.add_title} add_answer={this.add_answer} />
         <ul>
