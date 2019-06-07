@@ -127,10 +127,11 @@ class Quiz extends React.Component{
     };
 
     this.submit_question = this.submit_question.bind(this);
+    this.handle_guess = this.handle_guess.bind(this);
   }
 
   handle_guess(id){
-    console.log(id);
+    console.log(this.props.questions[this.state.question_number].answers[id].text);
   }
 
   submit_question(e){
