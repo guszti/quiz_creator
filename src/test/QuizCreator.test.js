@@ -1,6 +1,6 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import QuizCreator from '../App';
+import QuizCreator from '../components/QuizCreator';
 import { create, update } from 'react-test-renderer'
 import { exportAllDeclaration } from '@babel/types';
 
