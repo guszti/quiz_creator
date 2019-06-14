@@ -41,3 +41,43 @@ describe('Saving a question', () => {
 
     });
 });
+
+test('adding title', () => {
+
+  let tree = create(<QuizCreator />);
+  
+  let instance = tree.getInstance();
+
+  instance.add_title('some title');
+
+  expect(instance.state.title).toBe('some title');
+
+});
+
+test('adding answer', () => {
+
+  let tree = create(<QuizCreator />);
+  
+  let instance = tree.getInstance();
+
+  instance.add_answer('an answer');
+
+  expect(instance.state.answers[0].text).toBe('an answer');
+
+});
+
+test('mark correct answer', () => {
+
+  let tree = create(<QuizCreator />);
+
+  let instance = tree.getInstance();
+
+  instance.add_answer('an answer');
+
+  expect(instance.state.answers[0].right).toBe(false);
+
+  instance.mark_answer(true, 0);
+
+  expect(instance.state.answers[0].right).toBe(true);
+
+});
