@@ -1,15 +1,13 @@
 import React from 'react';
-import ReactDOM from 'react-dom';
 import QuizCreator from '../components/QuizCreator';
-import { create, update } from 'react-test-renderer'
-import { exportAllDeclaration } from '@babel/types';
+import { create } from 'react-test-renderer'
 
 describe('Starting the quiz', () =>{
     test('toggle button', () => {
   
-      let tree = create(<QuizCreator />);
+      let component = create(<QuizCreator />);
   
-      let instance = tree.getInstance();
+      let instance = component.getInstance();
   
       expect(instance.state.running).toBe(false);
   
@@ -23,9 +21,9 @@ describe('Starting the quiz', () =>{
 describe('Saving a question', () => {
     test('click save', () => {
 
-      let tree = create(<QuizCreator />);
+      let component = create(<QuizCreator />);
 
-      let instance = tree.getInstance();
+      let instance = component.getInstance();
 
       instance.add_title('asd');
 
@@ -44,9 +42,9 @@ describe('Saving a question', () => {
 
 test('adding title', () => {
 
-  let tree = create(<QuizCreator />);
+  let component = create(<QuizCreator />);
   
-  let instance = tree.getInstance();
+  let instance = component.getInstance();
 
   instance.add_title('some title');
 
@@ -56,9 +54,9 @@ test('adding title', () => {
 
 test('adding answer', () => {
 
-  let tree = create(<QuizCreator />);
+  let component = create(<QuizCreator />);
   
-  let instance = tree.getInstance();
+  let instance = component.getInstance();
 
   instance.add_answer('an answer');
 
@@ -68,9 +66,9 @@ test('adding answer', () => {
 
 test('mark correct answer', () => {
 
-  let tree = create(<QuizCreator />);
+  let component = create(<QuizCreator />);
 
-  let instance = tree.getInstance();
+  let instance = component.getInstance();
 
   instance.add_answer('an answer');
 
