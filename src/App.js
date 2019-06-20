@@ -8,4 +8,4 @@ function App() {
   );
 }
 
-export default QuizCreator;
+export default App;
