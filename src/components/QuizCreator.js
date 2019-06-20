@@ -19,6 +19,7 @@ class QuizCreator extends React.Component{
       this.save_question = this.save_question.bind(this);
       this.mark_answer = this.mark_answer.bind(this);
       this.run_quiz = this.run_quiz.bind(this);
+      this.reset_quiz = this.reset_quiz.bind(this);
     }
   
     add_title(title){
@@ -30,8 +31,7 @@ class QuizCreator extends React.Component{
     add_answer(answer){
       const new_answer = {
         text: answer,
-        right: false,
-        guess: false
+        right: false
       };
   
       this.setState({
@@ -68,6 +68,13 @@ class QuizCreator extends React.Component{
         running: true
       });
     }
+
+    reset_quiz(){
+      this.setState({
+        running: false,
+        questions: []
+      });
+    }
   
     render(){
   
@@ -80,7 +87,7 @@ class QuizCreator extends React.Component{
       );
   
       return(
-        this.state.running ? <Quiz questions={this.state.questions} /> :
+        this.state.running ? <Quiz questions={this.state.questions} reset={this.reset_quiz} /> :
         <div>
           {this.state.questions.length >= 1 ? run : ''}
           <h1>{this.state.title}</h1>

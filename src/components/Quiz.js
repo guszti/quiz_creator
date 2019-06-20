@@ -64,7 +64,7 @@ class Quiz extends React.Component{
               <input type="submit" value="Submit" />
             </form>
           : 
-            <EndScreen result={this.state.result} number_of_questions={this.props.questions.length} />
+            <EndScreen reset={this.props.reset} result={this.state.result} number_of_questions={this.props.questions.length} />
           }
         </div>
       );
