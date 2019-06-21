@@ -1,10 +1,8 @@
 import React from 'react';
-import ReactDOM from 'react-dom';
-import App from '../App';
-
+import Answer from '../components/Answer';
 
 it('renders without crashing', () => {
   const div = document.createElement('div');
-  ReactDOM.render(<App />, div);
+  ReactDOM.render(<Answer />, div);
   ReactDOM.unmountComponentAtNode(div);
 });

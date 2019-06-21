@@ -63,7 +63,7 @@ class Quiz extends React.Component{
   
     render(){
       return(
-        <div>
+        <div class="container">
           {this.state.question_number < this.props.questions.length ?
             <form onSubmit={this.submit_question}>
               <h2>{this.props.questions[this.state.question_number].title}</h2>

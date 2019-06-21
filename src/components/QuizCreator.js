@@ -2,6 +2,7 @@ import React from 'react';
 import Quiz from './Quiz';
 import QuestionForm from './QuestionForm';
 import Answer from './Answer';
+import TitleBar from './TitleBar'
 
 class QuizCreator extends React.Component{
     constructor(props){
@@ -87,34 +88,37 @@ class QuizCreator extends React.Component{
       );
   
       return(
-        this.state.running ? <Quiz questions={this.state.questions} reset={this.reset_quiz} /> :
         <div>
-          {this.state.questions.length >= 1 ? run : ''}
-          <h1>{this.state.title}</h1>
-          <QuestionForm t={this.state.title} add_title={this.add_title} add_answer={this.add_answer} />
-          <ul>
-            {this.state.answers.map((a, i) =>
-              <Answer a={a.text} key={i} index={i} mark_answer={this.mark_answer} />
+          <TitleBar />
+          {this.state.running ? <Quiz questions={this.state.questions} reset={this.reset_quiz} /> :
+          <div class="container">
+            {this.state.questions.length >= 1 ? run : ''}
+            <h1>{this.state.title}</h1>
+            <QuestionForm t={this.state.title} add_title={this.add_title} add_answer={this.add_answer} />
+            <ul>
+              {this.state.answers.map((a, i) =>
+                <Answer a={a.text} key={i} index={i} mark_answer={this.mark_answer} />
+              )}
+            </ul>
+            {this.state.answers.length >= 2 ? save : ''}
+            {this.state.questions.map((item, i) => 
+            <div key={i}>
+              <br />
+              <br/>
+              <hr />
+              <table>
+                <tbody>
+                  <tr><th>{item.title}</th></tr>
+                  {item.answers.map((a, j) => 
+                    <tr key={j}>
+                      {(a.right === true) ? <td style={{backgroundColor:'Chartreuse'}}><b>{a.text}</b></td> : <td>{a.text}</td>}
+                    </tr>
+                  )}
+                </tbody>
+              </table>
+              </div>
             )}
-          </ul>
-          {this.state.answers.length >= 2 ? save : ''}
-          {this.state.questions.map((item, i) => 
-          <div key={i}>
-            <br />
-            <br/>
-            <hr />
-            <table>
-              <tbody>
-                <tr><th>{item.title}</th></tr>
-                {item.answers.map((a, j) => 
-                  <tr key={j}>
-                    {(a.right === true) ? <td style={{backgroundColor:'Chartreuse'}}><b>{a.text}</b></td> : <td>{a.text}</td>}
-                  </tr>
-                )}
-              </tbody>
-            </table>
-            </div>
-          )}
+          </div>}
         </div>
       );
     }

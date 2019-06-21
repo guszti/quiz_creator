@@ -2,6 +2,12 @@ import React from 'react';
 import QuizCreator from '../components/QuizCreator';
 import { create } from 'react-test-renderer'
 
+it('renders without crashing', () => {
+  const div = document.createElement('div');
+  ReactDOM.render(<QuizCreator />, div);
+  ReactDOM.unmountComponentAtNode(div);
+});
+
 describe('Starting the quiz', () =>{
     test('toggle button', () => {
   

@@ -6,6 +6,12 @@ import Adapter from 'enzyme-adapter-react-16';
  
 Enzyme.configure({ adapter: new Adapter() });
 
+it('renders without crashing', () => {
+  const div = document.createElement('div');
+  ReactDOM.render(<QuestionForm />, div);
+  ReactDOM.unmountComponentAtNode(div);
+});
+
 describe('form input', () => {
   test('typing', () => {
     let component = mount(<QuestionForm />);
