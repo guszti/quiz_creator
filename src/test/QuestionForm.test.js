@@ -3,6 +3,7 @@ import QuestionForm from '../components/QuestionForm';
 import { mount } from 'enzyme';
 import Enzyme from 'enzyme';
 import Adapter from 'enzyme-adapter-react-16';
+import ReactDOM from 'react-dom';
  
 Enzyme.configure({ adapter: new Adapter() });
 

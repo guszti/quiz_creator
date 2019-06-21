@@ -1,9 +1,9 @@
 import React from 'react';
-import GuessButton from '../components/GuessButton';
+import TitleBar from '../components/TitleBar';
 import ReactDOM from 'react-dom';
 
 it('renders without crashing', () => {
   const div = document.createElement('div');
-  ReactDOM.render(<GuessButton />, div);
+  ReactDOM.render(<TitleBar />, div);
   ReactDOM.unmountComponentAtNode(div);
 });

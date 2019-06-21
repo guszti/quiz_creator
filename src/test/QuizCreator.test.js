@@ -1,6 +1,7 @@
 import React from 'react';
 import QuizCreator from '../components/QuizCreator';
 import { create } from 'react-test-renderer'
+import ReactDOM from 'react-dom';
 
 it('renders without crashing', () => {
   const div = document.createElement('div');

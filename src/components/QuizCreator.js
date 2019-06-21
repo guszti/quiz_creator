@@ -91,7 +91,7 @@ class QuizCreator extends React.Component{
         <div>
           <TitleBar />
           {this.state.running ? <Quiz questions={this.state.questions} reset={this.reset_quiz} /> :
-          <div class="container">
+          <div className="container">
             {this.state.questions.length >= 1 ? run : ''}
             <h1>{this.state.title}</h1>
             <QuestionForm t={this.state.title} add_title={this.add_title} add_answer={this.add_answer} />
