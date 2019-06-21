@@ -63,14 +63,16 @@ class Quiz extends React.Component{
   
     render(){
       return(
-        <div>
+        <div className="container">
           {this.state.question_number < this.props.questions.length ?
             <form onSubmit={this.submit_question}>
               <h2>{this.props.questions[this.state.question_number].title}</h2>
               {this.props.questions[this.state.question_number].answers.map((answer, index) =>
                 <GuessButton key={index} handle_guess={this.handle_guess} text={answer.text} id={index}/>
               )}
-              <input type="submit" value="Submit" />
+              <div>
+                <input className="btn btn-primary" type="submit" value="Submit" />
+              </div>
             </form>
           : 
             <EndScreen retry={this.retry_quiz} reset={this.props.reset} result={this.state.result} number_of_questions={this.props.questions.length} />

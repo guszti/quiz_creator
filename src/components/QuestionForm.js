@@ -35,8 +35,8 @@ class QuestionForm extends React.Component{
       const question = (     
         <div>
           <form onSubmit={this.handle_title}>
-            <input type='text' value={this.state.value} onChange={this.handle_change} />
-            <input type='submit' value='Add a question!' />
+            <input className="form-control" style={{width: '100%'}} type='text' value={this.state.value} onChange={this.handle_change} />
+            <input className="btn btn-danger" style={{width: '100%'}} type='submit' value='Add a question!' />
           </form>
         </div>
       );
@@ -44,8 +44,8 @@ class QuestionForm extends React.Component{
       const answer = (     
         <div>
           <form onSubmit={this.handle_answer}>
-            <input type='text' value={this.state.value} onChange={this.handle_change} />
-            <input type='submit' value='Add an answer!' />
+            <input className="form-control" style={{width: '100%'}} type='text' value={this.state.value} onChange={this.handle_change} />
+            <input className="btn btn-info" style={{width: '100%'}} type='submit' value='Add an answer!' />
           </form>
         </div>
       );

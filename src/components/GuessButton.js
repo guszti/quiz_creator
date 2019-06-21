@@ -1,4 +1,5 @@
 import React from 'react';
+import '../App.css';
 
 class GuessButton extends React.Component{
     constructor(props){
@@ -21,7 +22,7 @@ class GuessButton extends React.Component{
   
     render(){
       return(
-        this.state.is_marked ? <button style={{backgroundColor:'Chartreuse'}} onClick={this.handle_click}>{this.props.text}</button> : <button onClick={this.handle_click}>{this.props.text}</button>
+        this.state.is_marked ? <div><button className="App-butt btn btn-success" onClick={this.handle_click}>{this.props.text}</button><br /></div> : <div><button className="btn btn-secondary" onClick={this.handle_click}>{this.props.text}</button><br /><br /></div>
       );
     }
   }
