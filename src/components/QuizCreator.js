@@ -105,13 +105,12 @@ class QuizCreator extends React.Component{
             <div key={i}>
               <br />
               <br/>
-              <hr />
-              <table>
+              <table style={{width: '100%', textAlign: 'center'}}>
                 <tbody>
-                  <tr><th>{item.title}</th></tr>
+                  <tr className="table-danger"><th scope="row">{item.title}</th></tr>
                   {item.answers.map((a, j) => 
                     <tr key={j}>
-                      {(a.right === true) ? <td style={{backgroundColor:'Chartreuse'}}><b>{a.text}</b></td> : <td>{a.text}</td>}
+                      {(a.right === true) ? <td  class="table-success"><b>{a.text}</b></td> : <td>{a.text}</td>}
                     </tr>
                   )}
                 </tbody>
