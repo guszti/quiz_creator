@@ -14,6 +14,7 @@ class Quiz extends React.Component{
   
       this.submit_question = this.submit_question.bind(this);
       this.handle_guess = this.handle_guess.bind(this);
+      this.retry_quiz = this.retry_quiz.bind(this);
     }
   
     handle_guess(id, guess){
@@ -51,6 +52,14 @@ class Quiz extends React.Component{
         score: 0
       });
     }
+
+    retry_quiz(){
+      this.setState({
+        question_number: 0,
+        score: 0,
+        result: 0
+      });
+    }
   
     render(){
       return(
@@ -64,7 +73,7 @@ class Quiz extends React.Component{
               <input type="submit" value="Submit" />
             </form>
           : 
-            <EndScreen reset={this.props.reset} result={this.state.result} number_of_questions={this.props.questions.length} />
+            <EndScreen retry={this.retry_quiz} reset={this.props.reset} result={this.state.result} number_of_questions={this.props.questions.length} />
           }
         </div>
       );

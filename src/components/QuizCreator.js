@@ -75,7 +75,7 @@ class QuizCreator extends React.Component{
         questions: []
       });
     }
-  
+
     render(){
   
       const save = (
