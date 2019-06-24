@@ -80,11 +80,11 @@ class QuizCreator extends React.Component{
     render(){
   
       const save = (
-          <button onClick={this.save_question}>save question</button>
+          <button className="btn btn-success" style={{width: '100%'}} onClick={this.save_question}>save question</button>
       );
   
       const run = (
-        <button onClick={this.run_quiz}>begin quiz</button>
+        <button className="btn btn-success" style={{width: '100%'}} onClick={this.run_quiz}>begin quiz</button>
       );
   
       return(
@@ -95,7 +95,7 @@ class QuizCreator extends React.Component{
             {this.state.questions.length >= 1 ? run : ''}
             <h1 style={{textAlign: 'center'}}>{this.state.title}</h1>
             <QuestionForm t={this.state.title} add_title={this.add_title} add_answer={this.add_answer} />
-            <ul style={{textAlign: 'center'}}>
+            <ul class="list-group">
               {this.state.answers.map((a, i) =>
                 <Answer a={a.text} key={i} index={i} mark_answer={this.mark_answer} />
               )}

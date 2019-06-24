@@ -19,7 +19,7 @@ class Answer extends React.Component{
 
   render(){
     return(
-        <li key={this.props.index}>
+        <li className="list-group-item d-flex justify-content-between align-items-center" key={this.props.index}>
           {this.props.a}<input type='checkbox' onChange={this.handle_check} />
         </li>
     );

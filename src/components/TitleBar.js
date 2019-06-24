@@ -6,7 +6,7 @@ function TitleBar(){
       <div className="col-lg-12">
         <div className="bs-component">
           <nav className="navbar navbar-expand-lg navbar-dark bg-primary">
-          <a className="navbar-brand" href="#">The best quiz creator ever!</a>
+          <a style={{fontFamily: 'helvetica'}} className="navbar-brand" href="#">The best quiz creator ever!</a>
           </nav>
         </div>
       </div>
