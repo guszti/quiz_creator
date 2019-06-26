@@ -69,7 +69,7 @@ class Quiz extends React.Component{
               <br />
               <h1 className="alert alert-danger" style={{textAlign: "center"}}>{this.props.questions[this.state.question_number].title}</h1>
               {this.props.questions[this.state.question_number].answers.map((answer, index) =>
-                <GuessButton key={answer.text} handle_guess={this.handle_guess} text={answer.text} id={index}/>
+                <GuessButton key={answer.text + index + this.state.question_number} handle_guess={this.handle_guess} text={answer.text} id={index}/>
               )}
               <div>
                 <input className="btn btn-primary" type="submit" value="Submit" />
