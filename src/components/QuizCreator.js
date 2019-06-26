@@ -110,7 +110,7 @@ class QuizCreator extends React.Component{
                   <tr className="table-danger"><th scope="row">{item.title}</th></tr>
                   {item.answers.map((a, j) => 
                     <tr key={j}>
-                      {(a.right === true) ? <td  className="table-success"><b>{a.text}</b></td> : <td className="table-secondary">{a.text}</td>}
+                      {(a.right === true) ? <td  className="table-success">{a.text}</td> : <td className="table-secondary">{a.text}</td>}
                     </tr>
                   )}
                 </tbody>
