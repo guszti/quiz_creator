@@ -84,7 +84,12 @@ class QuizCreator extends React.Component{
       );
   
       const run = (
-        <button className="btn btn-success" style={{width: '100%'}} onClick={this.run_quiz}>begin quiz</button>
+        <div>
+          <br />
+          <button className="btn btn-outline-success" style={{width: '100%'}} onClick={this.run_quiz}>begin quiz</button>
+          <br />
+          <br />
+        </div>
       );
   
       return(

@@ -22,8 +22,14 @@ class GuessButton extends React.Component{
   
     render(){
       return(
-        this.state.is_marked ? <div><button className="btn btn-success" style={{width: "100%",height: "90px"}} onClick={this.handle_click}>{this.props.text}</button><br /><br /></div> : <div><button className="btn btn-secondary" style={{width: "100%",height: "90px"}} onClick={this.handle_click}>{this.props.text}</button><br /><br /></div>
-      );
+
+        this.state.is_marked
+        ?
+        <div><button className="btn btn-success" style={{width: "100%",height: "90px"}} onClick={this.handle_click}>{this.props.text}</button><br /><br /></div>
+        :
+        <div><button className="btn btn-secondary" style={{width: "100%",height: "90px"}} onClick={this.handle_click}>{this.props.text}</button><br /><br /></div>
+      
+        );
     }
   }
 
