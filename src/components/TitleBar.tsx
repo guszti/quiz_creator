@@ -1,7 +1,7 @@
-import React from 'react';
+import * as React from 'react';
+import {FC} from "react";
 
-function TitleBar(){
-  return(
+const TitleBar: FC = () => (
     <div className="row">
       <div className="col-lg-12">
         <div className="bs-component">
@@ -12,6 +12,5 @@ function TitleBar(){
       </div>
     </div>
   );
-}
 
 export default TitleBar;
