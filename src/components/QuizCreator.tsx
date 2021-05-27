@@ -1,9 +1,9 @@
 import * as React from 'react';
-import Quiz from './Quiz';
-import QuestionForm from './QuestionForm';
-import Answer from './Answer';
-import TitleBar from './TitleBar'
 import {FC, useState} from "react";
+import TitleBar from "./common/TitleBar";
+import Quiz from "./running_quiz/Quiz";
+import QuestionForm from "./quiz_creator/QuestionForm";
+import Answer from './quiz_creator/Answer';
 
 export type Answer = {
     text: string;

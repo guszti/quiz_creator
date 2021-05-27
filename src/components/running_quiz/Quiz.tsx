@@ -1,7 +1,7 @@
 import React, {FC, useState} from 'react';
 import GuessButton from './GuessButton';
 import EndScreen from './Endscreen';
-import {Question} from "./QuizCreator";
+import {Question} from "../QuizCreator";
 
 type OwnProps = {
     questions: Question[];
