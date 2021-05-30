@@ -1,5 +1,5 @@
 import * as React from "react";
-import { FC } from "react";
+import { FC, memo } from "react";
 
 const TitleBar: FC = () => (
     <div className="row">
@@ -18,4 +18,4 @@ const TitleBar: FC = () => (
     </div>
 );
 
-export default TitleBar;
+export default memo(TitleBar);

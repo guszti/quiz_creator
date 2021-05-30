@@ -1,5 +1,5 @@
 import * as React from "react";
-import { FC } from "react";
+import { FC, memo } from "react";
 import QuestionForm from "./components/QuestionForm";
 import { useDispatch, useSelector } from "react-redux";
 import { getQuestions } from "../redux/selectors";
@@ -62,4 +62,4 @@ const QuestionCreator: FC = () => {
     );
 };
 
-export default QuestionCreator;
+export default memo(QuestionCreator);

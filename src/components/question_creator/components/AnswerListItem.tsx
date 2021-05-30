@@ -1,5 +1,5 @@
 import * as React from "react";
-import { FC } from "react";
+import { FC, memo } from "react";
 import { useDispatch } from "react-redux";
 import { markAnswer } from "../redux/actions";
 import { Answer } from "../types";
@@ -31,4 +31,4 @@ const AnswerListItem: FC<OwnProps> = ({ index, answer }) => {
     );
 };
 
-export default AnswerListItem;
+export default memo(AnswerListItem);

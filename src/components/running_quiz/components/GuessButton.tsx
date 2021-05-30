@@ -1,5 +1,5 @@
 import * as React from "react";
-import { MouseEvent } from "react";
+import { memo, MouseEvent } from "react";
 import "../../../App.css";
 import { FC, useState } from "react";
 import { setScore } from "../redux/actions";
@@ -47,4 +47,4 @@ const GuessButton: FC<OwnProps> = ({ id, text }) => {
     );
 };
 
-export default GuessButton;
+export default memo(GuessButton);

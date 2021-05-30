@@ -1,5 +1,5 @@
 import * as React from "react";
-import { FC } from "react";
+import { FC, memo } from "react";
 import TitleBar from "./common/TitleBar";
 import Quiz from "./running_quiz/Quiz";
 import { useSelector } from "react-redux";
@@ -17,4 +17,4 @@ const QuizCreator: FC = () => {
     );
 };
 
-export default QuizCreator;
+export default memo(QuizCreator);

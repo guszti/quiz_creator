@@ -1,4 +1,4 @@
-import React, { FC } from "react";
+import React, { FC, memo } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import GuessButton from "./components/GuessButton";
 import EndScreen from "./components/Endscreen";
@@ -64,4 +64,4 @@ const Quiz: FC = () => {
     );
 };
 
-export default Quiz;
+export default memo(Quiz);

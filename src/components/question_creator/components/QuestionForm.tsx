@@ -1,5 +1,5 @@
 import * as React from "react";
-import { ChangeEvent, FC, FormEvent, useState } from "react";
+import { ChangeEvent, FC, FormEvent, memo, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { getAnswers, getTitle } from "../redux/selectors";
 import { setAnswers, setTitle } from "../redux/actions";
@@ -87,4 +87,4 @@ const QuestionForm: FC = () => {
     );
 };
 
-export default QuestionForm;
+export default memo(QuestionForm);

@@ -1,5 +1,5 @@
 import * as React from "react";
-import { FC } from "react";
+import { FC, memo } from "react";
 import { setQuestionNumber, setResult, setScore } from "../redux/actions";
 import { resetQuestions, setIsRunning } from "../../redux/actions";
 import { useDispatch } from "react-redux";
@@ -14,8 +14,8 @@ const EndScreen: FC<OwnProps> = ({ result, numberOfQuestions }) => {
 
     const final = (result / numberOfQuestions) * 100;
 
-    console.log(result, numberOfQuestions)
-    
+    console.log(result, numberOfQuestions);
+
     const retryQuiz = () => {
         dispatch(setQuestionNumber(0));
         dispatch(setResult(0));
@@ -51,4 +51,4 @@ const EndScreen: FC<OwnProps> = ({ result, numberOfQuestions }) => {
     );
 };
 
-export default EndScreen;
+export default memo(EndScreen);
