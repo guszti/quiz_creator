@@ -1,10 +1,8 @@
-import * as React from 'react';
-import './App.css';
-import QuizCreator from './components/QuizCreator';
-import {FC} from "react";
+import * as React from "react";
+import "./App.css";
+import QuizCreator from "./components/QuizCreator";
+import { FC } from "react";
 
-const App: FC = () => (
-    <QuizCreator />
-  );
+const App: FC = () => <QuizCreator />;
 
 export default App;
